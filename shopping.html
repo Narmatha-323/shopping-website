@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Simple Shopping Site</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .product { border: 1px solid #ccc; padding: 15px; margin-bottom: 15px; width: 200px; display: inline-block; vertical-align: top; }
+        .product button { margin-top: 10px; }
+        #cart { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>Products</h1>
+    <div id="products">
+        <div class="product">
+            <h3>T-Shirt</h3>
+            <p>Price: $15</p>
+            <button onclick="addToCart('T-Shirt', 15)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Jeans</h3>
+            <p>Price: $40</p>
+            <button onclick="addToCart('Jeans', 40)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <h3>Sneakers</h3>
+            <p>Price: $60</p>
+            <button onclick="addToCart('Sneakers', 60)">Add to Cart</button>
+        </div>
+    </div>
+
+    <h2>Your Cart</h2>
+    <ul id="cart-list"></ul>
+    <p><b>Total:</b> $<span id="total">0</span></p>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(name, price) {
+            cart.push({name: name, price: price});
+            total += price;
+
+            let cartList = document.getElementById('cart-list');
+            let item = document.createElement('li');
+            item.textContent = name + " - $" + price;
+            cartList.appendChild(item);
+
+            document.getElementById('total').textContent = total;
+        }
+    </script>
+</body>
+</html>
